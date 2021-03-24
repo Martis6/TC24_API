@@ -66,7 +66,7 @@ def data_to_db(input_df: dict, pred: list) -> None:
   cur.close()
 
 
-def last10(input_df: pd.DataFrame, pred: list) -> dict:
+def last10() -> dict:
   """Function to get last 10 predictions, returns dictionary."""
   
   con = connect_db()
