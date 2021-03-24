@@ -18,7 +18,6 @@ def preprocess(request_data: json) -> pd.DataFrame:
   df["condition"] = df["condition"].astype("category")
 
   cat_columns = df.select_dtypes(['category']).columns
-  df[cat_columns] = df[cat_columns].apply(lambda x: x.cat.codes)
   # dictonaries for the recoding
   neighborhood = pd.concat([df.neighborhood, df.neighborhood.cat.codes], axis=1).drop_duplicates()
   neighborhood = neighborhood.set_index("neighborhood")[0].to_dict()
@@ -36,3 +35,8 @@ def preprocess(request_data: json) -> pd.DataFrame:
   res["heating_type"].replace(heating_type, inplace=True)
   res["condition"].replace(condition, inplace=True)
   return res
+
+
+
+
+request_data = json.dumps({"input":[{'neighborhood': 'Užupis', 'rooms': 2, 'area_m2': 50, 'floor': 3, 'max_floors': 3, 'year': 2020, 'build_material': 'brick', 'heating_type': 'central', 'condition': 'fully equipped'}]})
