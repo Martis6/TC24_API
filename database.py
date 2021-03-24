@@ -79,28 +79,21 @@ def last10() -> dict:
   
   last10 = [
     {
-      "neighborhood": row[0], 
-      "rooms": row[1], 
-      "area_m2": row[2], 
-      "floor": row[3], 
-      "max_floors": row[4], 
-      "year": row[5], 
-      "build_material": row[6], 
-      "heating_type": row[7], 
-      "condition": row[8], 
-      "pred": row[9]
+      "neighborhood": row[1], 
+      "rooms": row[2], 
+      "area_m2": row[3], 
+      "floor": row[4], 
+      "max_floors": row[5], 
+      "year": row[6],
+      "build_material": row[7], 
+      "heating_type": row[8], 
+      "condition": row[9], 
+      "pred": row[10]
     } for row in history10
   ]
   con.commit()
   cur.close()
   return last10
-
-
-
-
-
-
-
 
 
 
