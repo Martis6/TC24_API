@@ -1,6 +1,7 @@
 from database import connect_db, create_table, data_to_db, last10
 from prep import preprocess
 from flask import Flask, request
+import pandas as pd
 import json
 import pickle
 
@@ -20,7 +21,7 @@ def predict():
   """Function takes input data via POST request and returns price prediction."""
   try:
     data = preprocess(request.data)
-  except:
+  except(ValueError, RuntimeError, TypeError, NameError):
     return json.dumps({"Error": "preprocessing failed"}), 400
   try:
     prediction = model.predict(data)
