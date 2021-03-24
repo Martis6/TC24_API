@@ -14,15 +14,15 @@ requests.post("https://flask-tc24.herokuapp.com/predict", data=json.dumps(
     {
       "input":[
                   {
-	                    'neighborhood': 'Užupis', 
-	                    'rooms': 2, 
-	                    'area_m2': 50, 
-	                    'floor': 3, 
-	                    'max_floors': 3, 
-	                    'year': 2020, 
-	                    'build_material': 'brick', 
-	                    'heating_type': 'central', 
-	                    'condition': 'fully equipped'
+                        'neighborhood': 'Užupis', 
+                        'rooms': 2, 
+                        'area_m2': 50, 
+                        'floor': 3, 
+                        'max_floors': 3, 
+                        'year': 2020, 
+                        'build_material': 'brick', 
+                        'heating_type': 'central', 
+                        'condition': 'fully equipped'
                   }, 
               ]
     }
