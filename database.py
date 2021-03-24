@@ -1,19 +1,11 @@
 import psycopg2
 import pandas as pd
-from dotenv import load_dotenv
-import os
+from decouple import config
 
-def connect_db() -> psycopg2.connect:
+def connect_db() -> connection:
   """Function to connect to Heroku database, returns connection."""
 
-  load_dotenv()
-  connection = psycopg2.connect(
-    database=os.getenv("H_DATABASE"),
-    user=os.getenv("H_USER"),
-    password=os.getenv("H_PASSWORD"),
-    host=os.getenv("H_HOST"),
-    port=os.getenv("H_PORT")
-  )
+  connection = psycopg2.connect(config("DATABASE_URL"))
   return connection
 
 def create_table() -> None:

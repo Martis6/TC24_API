@@ -18,8 +18,10 @@ def root():
 @app.route("/predict", methods=["POST"])
 def predict():
   """Function takes input data via POST request and returns price prediction."""
-
-  data = preprocess(request.data)
+  try:
+    data = preprocess(request.data)
+  except:
+    return json.dumps({"Error": "preprocessing failed"}), 400
   try:
     prediction = model.predict(data)
   except(ValueError, RuntimeError, TypeError, NameError):

@@ -35,8 +35,3 @@ def preprocess(request_data: json) -> pd.DataFrame:
   res["heating_type"].replace(heating_type, inplace=True)
   res["condition"].replace(condition, inplace=True)
   return res
-
-
-
-
-request_data = json.dumps({"input":[{'neighborhood': 'Užupis', 'rooms': 2, 'area_m2': 50, 'floor': 3, 'max_floors': 3, 'year': 2020, 'build_material': 'brick', 'heating_type': 'central', 'condition': 'fully equipped'}]})
