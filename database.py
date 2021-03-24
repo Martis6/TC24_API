@@ -2,7 +2,7 @@ import psycopg2
 import pandas as pd
 from decouple import config
 
-def connect_db() -> connection:
+def connect_db() -> psycopg2.connect:
   """Function to connect to Heroku database, returns connection."""
 
   connection = psycopg2.connect(config("DATABASE_URL"))
