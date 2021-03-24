@@ -19,6 +19,9 @@ def root():
 @app.route("/predict", methods=["POST"])
 def predict():
   """Function takes input data via POST request and returns price prediction."""
+  
+  create_table()
+  
   try:
     data = preprocess(request.data)
   except(ValueError, RuntimeError, TypeError, NameError):
@@ -28,7 +31,6 @@ def predict():
   except(ValueError, RuntimeError, TypeError, NameError):
     return json.dumps({"Error": "Prediction failed"}), 400
 
-  create_table()
   raw = pd.DataFrame(json.loads(request.data)["input"])
   data_to_db(input_df=raw, pred=prediction)
   return json.dumps({"Predicted price": list(prediction)}), 200

@@ -57,7 +57,7 @@ def data_to_db(input_df: dict, pred: list) -> None:
       pred
     ) = row
     insert_this = f"INSERT INTO objects(neighborhood, rooms, area_m2, floor, \
-      max_floors, year, build_material, heating_type, condition, pred) \
+      max_floors, year, build_material, heating_type, condition, prediction) \
       VALUES('{neighborhood}', '{rooms}', '{area_m2}', '{floor}', '{max_floors}', \
       '{year}', '{build_material}', '{heating_type}', '{condition}', '{pred}')"
     cur.execute(insert_this)
