@@ -13,6 +13,7 @@ app = Flask(__name__)
 @app.route("/")
 def root():
   """Function returns welcoming message."""
+
   return "<h2>2nd Capstone Project</h2>" \
     "<p> Path '/predict' for price prediction or '/history' for last 10 predictions.</p>"
 
@@ -26,13 +27,16 @@ def predict():
     data = preprocess(request.data)
   except(ValueError, RuntimeError, TypeError, NameError):
     return json.dumps({"Error": "preprocessing failed"}), 400
+
   try:
     prediction = model.predict(data)
   except(ValueError, RuntimeError, TypeError, NameError):
-    return json.dumps({"Error": "Prediction failed"}), 400
+    return json.dumps({"Error": "Prediction failed"}), 500
 
   raw = pd.DataFrame(json.loads(request.data)["input"])
+
   data_to_db(input_df=raw, pred=prediction)
+
   return json.dumps({"Predicted price": list(prediction)}), 200
 
 @app.route("/history", methods=["GET"])
@@ -40,6 +44,7 @@ def history():
   """Function returns last 10 predictions in JSON format."""
 
   db_data = last10()
+
   return json.dumps({"Last 10 predictions": db_data}), 200
 
 if __name__ == "__main__":

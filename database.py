@@ -88,7 +88,7 @@ def last10() -> dict:
       "build_material": row[7], 
       "heating_type": row[8], 
       "condition": row[9], 
-      "pred": row[10]
+      "predicted_price": row[10]
     } for row in history10
   ]
   con.commit()
