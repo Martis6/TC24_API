@@ -14,7 +14,7 @@ requests.post("https://flask-tc24.herokuapp.com/predict", data=json.dumps(
     {
       "input":[
                   {
-	                  	'neighborhood': 'Užupis', 
+	                    'neighborhood': 'Užupis', 
 	                    'rooms': 2, 
 	                    'area_m2': 50, 
 	                    'floor': 3, 
