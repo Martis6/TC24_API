@@ -1,6 +1,6 @@
 ## TC24_API
 
-Prediction API part of 2nd capstone project for Turing College. 
+Prediction API part of 2nd capstone project for Turing College (basic model just for the API to work). 
 
 This Flask API (https://flask-tc24.herokuapp.com/) is able to use linear regression model to predict object price (specifically flat) based on given information about the flat such as neighborhood, area, year of built and etc. It also stores all inputs and predictions in postgresql database of Heroku.
 
